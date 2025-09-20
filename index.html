@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MiAmor — Matchmaking & Earn</title>
+  <meta name="description" content="MiAmor — Earn by matchmaking. Register, match, earn ₦5,000 per match." />
+  <style>
+    :root{
+      --accent:#e11d48; /* red-ish accent like MiAmor */
+      --bg:#ffffff;
+      --muted:#6b7280;
+      --card:#fbfbfb;
+      --radius:16px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#0f172a;line-height:1.45}
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid #eee}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo .mark{width:48px;height:48px;border-radius:12px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px}
+    nav{display:none}
+    .btn{background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+    .hero{padding:44px 0;text-align:center}
+    .hero h1{font-size:34px;margin:6px 0 8px;color:var(--accent)}
+    .hero p{color:var(--muted);max-width:760px;margin:0 auto}
+    .row{display:flex;flex-wrap:wrap;gap:16px;margin-top:24px;justify-content:center}
+    .card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:0 6px 18px rgba(15,23,42,0.04);flex:1;min-width:240px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    section{padding:28px 0}
+    h2{margin:0 0 10px;font-size:20px}
+    p.small{color:var(--muted);margin:0}
+    ul{margin:8px 0 0 18px;color:var(--muted)}
+    footer{padding:22px 0;border-top:1px solid #f0f0f0;color:var(--muted);text-align:center;font-size:14px}
+    /* responsive */
+    @media(min-width:720px){ nav{display:flex;gap:16px;align-items:center} .hero h1{font-size:44px} .grid-3{grid-template-columns:repeat(3,1fr)} }
+    @media(max-width:719px){ .grid-3{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="mark">M</div>
+        <div>
+          <div style="font-weight:700;color:var(--accent);font-size:18px">MiAmor</div>
+          <div style="font-size:12px;color:var(--muted)">Matchmaking • Earn • Connect</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#how" style="color:#111;text-decoration:none">How it works</a>
+        <a href="#features" style="color:#111;text-decoration:none">Features</a>
+        <a href="#pricing" style="color:#111;text-decoration:none">Pricing</a>
+        <button class="btn" onclick="scrollToSection('register')">Register</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <h1>MiAmor — The Future of Matchmaking & Earning</h1>
+        <p>Earn ₦5,000 on every match you make with MiAmor. Register once, start matching — get paid fast. Join thousands already earning from matchmaking services and VIP perks.</p>
+        <div class="row" style="margin-top:18px">
+          <button class="btn" onclick="scrollToSection('pricing')">Get Started</button>
+          <button class="btn ghost" style="margin-left:8px" onclick="scrollToSection('features')">Learn more</button>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section id="how">
+        <h2 style="color:var(--accent)">How MiAmor Works</h2>
+        <p class="small">MiAmor blends real relationships with real earnings. Help singles connect, host premium calls, make quality matches — and earn per successful match. It's simple: register, get your activation code, start matching, withdraw earnings.</p>
+      </section>
+
+      <!-- Pricing -->
+      <section id="pricing">
+        <h2 style="color:var(--accent)">Registration Fee</h2>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">
+          <div class="card">
+            <h3 style="margin:0 0 6px">MiAmor Plus</h3>
+            <div style="font-weight:700;margin-bottom:8px">₦10,000</div>
+            <ul>
+              <li>Activation bonus ₦8,000</li>
+              <li>Access to earning dashboard</li>
+              <li>Weekly raffle draws</li>
+            </ul>
+            <div style="margin-top:12px"><button class="btn" onclick="scrollToSection('register')">Register Plus</button></div>
+          </div>
+
+          <div class="card">
+            <h3 style="margin:0 0 6px">MiAmor Ultra</h3>
+            <div style="font-weight:700;margin-bottom:8px">₦14,000</div>
+            <ul>
+              <li>Activation bonus ₦12,500</li>
+              <li>VIP mentorship group</li>
+              <li>Priority payouts</li>
+            </ul>
+            <div style="margin-top:12px"><button class="btn" onclick="scrollToSection('register')">Register Ultra</button></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section id="features">
+        <h2 style="color:var(--accent)">Features</h2>
+        <div class="grid-3" style="margin-top:12px">
+          <div class="card">
+            <h3 style="margin-bottom:6px">Match & Earn</h3>
+            <p class="small">Get paid ₦5,000 per match. Work from anywhere and accept matches every day.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin-bottom:6px">Weekly Raffle</h3>
+            <p class="small">Participate in weekly draws and win cash prizes and gifts.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin-bottom:6px">Romantic Getaway</h3>
+            <p class="small">Top performers and lucky couples win paid trips and special experiences.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Register (fake form just to collect interest) -->
+      <section id="register">
+        <div class="card" style="max-width:720px;margin:10px auto">
+          <h2 style="color:var(--accent)">Create your account</h2>
+          <p class="small">Fill below and a verified agent will contact you with the activation code and payment details.</p>
+          <form onsubmit="fakeSubmit(event)" style="display:grid;gap:10px;margin-top:12px">
+            <input name="name" placeholder="Full name" required style="padding:12px;border-radius:10px;border:1px solid #e6e6e6">
+            <input name="phone" placeholder="Phone number (e.g. +234...)" required style="padding:12px;border-radius:10px;border:1px solid #e6e6e6">
+            <input name="city" placeholder="City" style="padding:12px;border-radius:10px;border:1px solid #e6e6e6">
+            <div style="display:flex;gap:8px">
+              <button class="btn" type="submit">Register</button>
+              <button type="button" class="btn ghost" onclick="alert('Contact: +234 800 000 0000')">Contact</button>
+            </div>
+            <div style="font-size:13px;color:var(--muted)">We never share your info. A trusted merchant will reach you to complete activation.</div>
+          </form>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq">
+        <h2 style="color:var(--accent)">FAQ</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+          <div class="card">
+            <strong>Do I need a referral to get paid?</strong>
+            <p class="small">No — referrals are not required. Earnings are based on matches you make.</p>
+          </div>
+          <div class="card">
+            <strong>How do I join?</strong>
+            <p class="small">Complete the registration above or contact a verified merchant to buy your activation code.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> MiAmor. All rights reserved. • Contact: +234 800 000 0000
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function scrollToSection(id){
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    function fakeSubmit(e){
+      e.preventDefault();
+      const name = e.target.name.value || '';
+      const phone = e.target.phone.value || '';
+      alert('Thanks ' + (name||'friend') + '! A verified merchant will contact ' + (phone||'you') + ' soon.');
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

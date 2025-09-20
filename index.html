@@ -4,61 +4,54 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>MiAmor — Matchmaking & Earning</title>
-  <meta name="description" content="MiAmor — Earn ₦5,000 per match. Register now, join VIP, play raffles and start earning from matchmaking." />
+  <meta name="description" content="MiAmor — Earn ₦5,000 per match. Register now, VIP access, raffles and bonuses." />
   <style>
     :root{
-      --accent:#e11d48; /* pink/red accent */
-      --bg:#ffffff;
-      --muted:#6b7280;
-      --card:#fff6f8;
-      --radius:14px;
+      --accent:#2563eb; /* sharp blue */
+      --accent-light:#d0e2ff; /* light blue background accents */
+      --muted:#374151;
+      --bg:#f9fbff;
+      --card:#ffffff;
+      --radius:12px;
       --maxw:1100px;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
     }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:#0f172a;-webkit-font-smoothing:antialiased}
-    a{color:inherit}
+    body{margin:0;background:var(--bg);color:#0f172a}
     .container{max-width:var(--maxw);margin:0 auto;padding:18px}
-    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
     .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:56px;height:56px;border-radius:12px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px}
+    .logo{width:52px;height:52px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
     nav{display:none}
-    .btn{background:var(--accent);color:#fff;padding:12px 18px;border-radius:10px;border:0;cursor:pointer;text-decoration:none;font-weight:700;display:inline-block}
+    .cta {background:var(--accent);color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700}
+    .hero{padding:48px 18px;text-align:center;background:linear-gradient(180deg,#d0e2ff,#f9fbff);border-radius:14px}
+    .hero h1{color:var(--accent);font-size:28px;margin:8px 0;font-weight:900}
+    .hero p{color:var(--muted);max-width:840px;margin:0 auto}
+    .actions{margin-top:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    section{padding:44px 0;border-bottom:1px solid #e0e7ff}
+    h2{color:var(--accent);margin:0 0 8px;font-size:20px}
+    .lead{color:var(--muted);max-width:900px;margin:0 auto 12px;text-align:center}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:16px}
+    .card{background:var(--card);padding:16px;border-radius:var(--radius);box-shadow:0 8px 30px rgba(15,23,42,0.04);border:1px solid #e0e7ff}
+    .price{font-weight:900;color:var(--accent);margin-top:6px}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:12px}
+    .gallery img{width:100%;height:140px;object-fit:cover;border-radius:10px;background:var(--accent-light)}
+
+    footer{padding:26px 0;text-align:center;color:var(--muted)}
+
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
+    .modal{background:#fff;width:100%;max-width:520px;border-radius:12px;padding:18px;box-shadow:0 20px 50px rgba(2,6,23,0.3)}
+    .modal h3{margin:0 0 6px;color:var(--accent)}
+    .field{margin-top:10px}
+    .field label{display:block;font-weight:700;margin-bottom:6px;font-size:14px}
+    .field input,.field select{width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;font-size:14px}
+    .modal .small{font-size:13px;color:var(--muted);margin-top:8px}
+    .modal .row{display:flex;gap:8px;margin-top:12px}
+    .btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:800;border:0;cursor:pointer}
     .btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
-    .hero{display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center;padding:56px 18px;background:linear-gradient(180deg,#fff0f5 0%, #fff 60%);border-radius:16px}
-    .hero h1{font-size:30px;margin:0;color:var(--accent);font-weight:800}
-    .hero p{max-width:820px;color:var(--muted);margin:0;font-size:16px}
-    .hero .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:6px}
-    .hero img{width:100%;max-width:920px;border-radius:12px;margin-top:12px;box-shadow:0 10px 30px rgba(225,29,72,0.12);object-fit:cover}
-
-    section{padding:48px 0;border-bottom:1px solid #faf0f3}
-    h2{font-size:22px;margin:0 0 10px;color:var(--accent);font-weight:800}
-    .lead{color:var(--muted);max-width:900px;margin:0 auto 8px;text-align:center}
-
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:18px}
-    .card{background:#fff;padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(15,23,42,0.04);border:1px solid rgba(225,29,72,0.04)}
-    .card h3{margin:0 0 6px;font-size:16px}
-    .card p{margin:0;color:var(--muted);font-size:14px}
-
-    .pricing .price{font-weight:900;font-size:20px;color:var(--accent);margin-top:6px}
-    .pricing ul{margin:10px 0 0 18px;color:var(--muted)}
-
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
-    .gallery img{width:100%;height:170px;object-fit:cover;border-radius:10px}
-
-    .faq .q{font-weight:700;margin-bottom:6px}
-    footer{padding:24px 0;text-align:center;color:var(--muted);font-size:14px}
-
-    /* responsive nav show */
-    @media(min-width:740px){
-      nav{display:flex;gap:16px;align-items:center}
-      .hero{padding:72px 18px}
-      .hero h1{font-size:40px}
-    }
-    @media(max-width:520px){
-      .hero h1{font-size:22px}
-      .hero p{font-size:14px}
-    }
+    .close-btn{background:#f3f4f6;border-radius:8px;padding:8px 10px;border:0;cursor:pointer}
+    @media(min-width:760px){ nav{display:flex;gap:14px;align-items:center} .hero h1{font-size:34px} }
   </style>
 </head>
 <body>
@@ -67,17 +60,15 @@
       <div class="brand">
         <div class="logo">M</div>
         <div>
-          <div style="font-weight:800;font-size:18px;color:var(--accent)">MiAmor</div>
-          <div style="font-size:12px;color:var(--muted)">Matchmaking • Earn • Connect</div>
+          <div style="font-weight:800;color:var(--accent)">MiAmor</div>
+          <div style="font-size:13px;color:var(--muted)">Matchmaking • Earn • Connect</div>
         </div>
       </div>
-
       <nav>
-        <a href="#how" style="color:#fff;text-decoration:none;margin-right:10px">How it works</a>
-        <a href="#pricing" style="color:#fff;text-decoration:none;margin-right:10px">Pricing</a>
-        <a href="#gallery" style="color:#fff;text-decoration:none;margin-right:10px">Gallery</a>
-        <a href="#faq" style="color:#fff;text-decoration:none;margin-right:10px">FAQ</a>
-        <a class="btn" href="https://wa.me/2349034634500?text=I%20want%20to%20pay%20for%20MIAMOR%20registration" target="_blank">Register</a>
+        <a href="#how" style="color:#374151;text-decoration:none">How it works</a>
+        <a href="#pricing" style="color:#374151;text-decoration:none">Pricing</a>
+        <a href="#gallery" style="color:#374151;text-decoration:none">Gallery</a>
+        <a class="cta open-modal" href="#" data-source="header">Register</a>
       </nav>
     </header>
 
@@ -85,153 +76,152 @@
     <section class="hero" id="home">
       <h1>MiAmor - The Future of MatchMaking & Earning</h1>
       <p><strong>Earn ₦5,000 on every match you make on MiAmor and get paid.</strong> Stop matchmaking for free and start getting paid now! Join thousands earning daily with activation bonuses, VIP access and weekly raffles.</p>
-
       <div class="actions">
-        <a class="btn" href="https://wa.me/2349034634500?text=I%20want%20to%20pay%20for%20MIAMOR%20registration" target="_blank">Register</a>
-        <a class="btn ghost" href="#how">How it works</a>
+        <a class="btn open-modal" href="#" data-source="hero-getstarted">Get Started</a>
+        <a class="btn ghost open-modal" href="#" data-source="hero-register">Register</a>
       </div>
-
-      <!-- placeholder hero image (upload images/hero.jpg later) -->
-      <img src="images/hero.jpg" alt="MiAmor app & couples hero image">
+      <img src="images/hero.jpg" alt="MiAmor hero image" onerror="this.style.display='none'">
     </section>
 
-    <!-- ABOUT / HOW -->
+    <!-- HOW -->
     <section id="how">
       <h2>How MiAmor Works</h2>
-      <p class="lead">MiAmor combines matchmaking with earning opportunities — register, get activated, help singles connect, and receive payment for every confirmed match. Simple, fast payments and extra rewards for top performers.</p>
-
+      <p class="lead">Register, get activated, help singles connect and receive payment for every confirmed match. Simple onboarding, fast payouts, VIP perks and weekly raffle bonuses for active members.</p>
       <div class="grid">
-        <div class="card">
-          <h3>Register & Activate</h3>
-          <p>Pay the one-time registration fee and receive an activation code and onboarding support.</p>
-        </div>
-        <div class="card">
-          <h3>Make Matches</h3>
-          <p>Connect two compatible people, make the introduction, and follow through until confirmation.</p>
-        </div>
-        <div class="card">
-          <h3>Get Paid</h3>
-          <p>Once a match is confirmed, you receive ₦5,000 immediately. Top matchers access bigger bonuses.</p>
-        </div>
+        <div class="card"><h3>Register & Activate</h3><p>Pay the one-time registration fee and receive activation details.</p></div>
+        <div class="card"><h3>Make Matches</h3><p>Connect two people and follow through until confirmation.</p></div>
+        <div class="card"><h3>Get Paid</h3><p>Each confirmed match rewards ₦5,000 instantly.</p></div>
       </div>
     </section>
 
-    <!-- PRICING (exact same numbers & bonuses) -->
+    <!-- PRICING -->
     <section id="pricing">
-      <h2>Registration Fee & Plans</h2>
-      <p class="lead">Choose your activation package — each plan includes activation bonuses and access to community perks.</p>
-
-      <div class="grid pricing">
+      <h2>Registration Fee</h2>
+      <p class="lead">One time activation with bonuses and VIP perks.</p>
+      <div class="grid">
         <div class="card">
-          <h3>MiAmor Plus</h3>
+          <h3>Activation</h3>
           <div class="price">₦10,000 (one-time)</div>
-          <ul>
+          <ul style="color:var(--muted);margin-top:10px">
             <li>Activation bonus: ₦8,000</li>
             <li>Access to VIP group</li>
             <li>Weekly raffle entries</li>
-            <li>Basic support & onboarding</li>
+            <li>Onboarding & support</li>
           </ul>
           <div style="margin-top:12px">
-            <a class="btn" href="https://wa.me/2349034634500?text=I%20want%20to%20pay%20for%20MIAMOR%20registration" target="_blank">Register for ₦10,000</a>
+            <a class="btn open-modal" href="#" data-source="pricing-10k">Register ₦10,000</a>
           </div>
         </div>
-
         <div class="card">
-          <h3>MiAmor Ultra</h3>
+          <h3>Optional Higher Activation</h3>
           <div class="price">₦14,000 (one-time)</div>
-          <ul>
+          <ul style="color:var(--muted);margin-top:10px">
             <li>Activation bonus: ₦12,500</li>
-            <li>Priority access to VIP mentorship</li>
-            <li>Higher raffle & game rewards</li>
-            <li>Priority payouts & premium support</li>
+            <li>Priority in VIP mentorship</li>
+            <li>Higher raffle rewards</li>
+            <li>Priority payouts</li>
           </ul>
           <div style="margin-top:12px">
-            <a class="btn" href="https://wa.me/2349034634500?text=I%20want%20to%20pay%20for%20MIAMOR%20registration" target="_blank">Register for ₦14,000</a>
+            <a class="btn open-modal" href="#" data-source="pricing-14k">Register ₦14,000</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FEATURES / EXTRAS -->
-    <section id="features">
-      <h2>Platform Benefits & Extras</h2>
-      <p class="lead">Beyond matching, enjoy games, weekly draws, VIP perks and more ways to boost your earnings.</p>
-
-      <div class="grid">
-        <div class="card">
-          <h3>Weekly Raffles & Prizes</h3>
-          <p>Automatic raffle entries for active members — win cash, gadgets or paid trips.</p>
-        </div>
-        <div class="card">
-          <h3>VIP Mentorship</h3>
-          <p>Join the VIP group to learn top-converting strategies and priority offers.</p>
-        </div>
-        <div class="card">
-          <h3>Simple Withdrawals</h3>
-          <p>Fast and secure withdrawals — get your earnings on time with clear payout rules.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY (placeholders) -->
+    <!-- GALLERY -->
     <section id="gallery">
-      <h2>Gallery / App Screenshots</h2>
-      <p class="lead">Upload your own app screenshots, success stories or earnings images by placing files in the images/ folder (gallery1.jpg, gallery2.jpg, gallery3.jpg).</p>
-
+      <h2>Gallery / Screenshots</h2>
+      <p class="lead">Replace the placeholders by uploading your images to images/ folder.</p>
       <div class="gallery">
-        <img src="images/gallery1.jpg" alt="Gallery image 1">
-        <img src="images/gallery2.jpg" alt="Gallery image 2">
-        <img src="images/gallery3.jpg" alt="Gallery image 3">
+        <img src="images/gallery1.jpg" alt="Gallery 1" onerror="this.style.display='none'">
+        <img src="images/gallery2.jpg" alt="Gallery 2" onerror="this.style.display='none'">
+        <img src="images/gallery3.jpg" alt="Gallery 3" onerror="this.style.display='none'">
+        <img src="images/gallery4.jpg" alt="Gallery 4" onerror="this.style.display='none'">
+        <img src="images/gallery5.jpg" alt="Gallery 5" onerror="this.style.display='none'">
+        <img src="images/gallery6.jpg" alt="Gallery 6" onerror="this.style.display='none'">
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq">
-      <h2>Frequently Asked Questions</h2>
-      <div class="grid faq">
-        <div class="card">
-          <div class="q">Do I need a referral to get paid?</div>
-          <p>No. You do not need referrals to earn. Earnings are paid per confirmed match.</p>
-        </div>
-        <div class="card">
-          <div class="q">How much can I earn?</div>
-          <p>Each confirmed match pays ₦5,000. Active members with bonuses and raffles can earn significantly more.</p>
-        </div>
-        <div class="card">
-          <div class="q">How often can I withdraw?</div>
-          <p>Payout schedules vary — premium members get priority payouts. Check your dashboard or contact support via WhatsApp.</p>
-        </div>
+    <section id="register-cta">
+      <h2>Ready to Join?</h2>
+      <p class="lead">Click Register or Get Started and fill the quick form — then use WhatsApp to complete payment.</p>
+      <div style="text-align:center;margin-top:12px">
+        <a class="btn open-modal" href="#" data-source="cta">Register Now</a>
       </div>
-    </section>
-
-    <!-- REGISTER CTA -->
-    <section id="register">
-      <h2>Ready to Register?</h2>
-      <p class="lead">Click the Register button below to open WhatsApp and send: <strong>"I want to pay for MIAMOR registration"</strong>.</p>
-      <a class="btn" href="https://wa.me/2349034634500?text=I%20want%20to%20pay%20for%20MIAMOR%20registration" target="_blank">Register via WhatsApp</a>
     </section>
 
     <footer>
-      <div style="margin-bottom:8px">&copy; <span id="year"></span> MiAmor. All rights reserved.</div>
-      <div style="color:var(--muted)">Contact/WhatsApp: +234 903 463 4500</div>
+      <div>&copy; <span id="year"></span> MiAmor. All rights reserved.</div>
+      <div style="color:var(--muted);margin-top:6px">WhatsApp: +234 903 463 4500</div>
     </footer>
   </div>
 
+  <!-- MODAL (popup form) -->
+  <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document" aria-labelledby="modal-title">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <h3 id="modal-title">Register — MiAmor</h3>
+        <button class="close-btn" id="closeModal" title="Close">✕</button>
+      </div>
+
+      <div style="margin-top:8px;color:var(--muted)">Fill the form below. After clicking Get Started you'll be taken to WhatsApp to complete payment.</div>
+
+      <div style="margin-top:12px">
+        <div class="field">
+          <label>Full Name</label>
+          <input id="fullName" type="text" placeholder="Your full name" />
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input id="email" type="email" placeholder="you@example.com" />
+        </div>
+        <div class="field">
+          <label>Phone Number</label>
+          <input id="phone" type="tel" placeholder="+234..." />
+        </div>
+        <div class="field">
+          <label>Choose Plan</label>
+          <select id="plan">
+            <option value="10000">₦10,000 Plan</option>
+            <option value="14000">₦14,000 Plan</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Coupon Code</label>
+          <input id="coupon" type="text" placeholder="Enter coupon code (optional)" />
+          <div class="small">Don't have coupon code? <a id="getCodeLink" href="#">Get Code</a></div>
+        </div>
+
+        <div class="row" style="justify-content:flex-end">
+          <button class="close-btn" id="cancelBtn">Cancel</button>
+          <button class="btn" id="modalSubmit">Get Started</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // small helpers
-    document.getElementById('year').textContent = new Date().getFullYear();
-    // If user wants smooth anchors on older browsers:
-    (function(){
-      const links = document.querySelectorAll('a[href^="#"]');
-      for(const a of links){
-        a.addEventListener('click', function(e){
-          e.preventDefault();
-          const id = this.getAttribute('href').slice(1);
-          const el = document.getElementById(id);
-          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-        });
-      }
-    })();
-  </script>
-</body>
-  </html>
+    const WA_NUMBER = '2349034634500';
+    const WA_REG_MESSAGE = 'I want to pay for MIAMOR registration';
+    const WA_COUPON_MESSAGE = 'I want to pay for MIAMOR coupon code';
+    const modal = document.getElementById('modal');
+    const openButtons = document.querySelectorAll('.open-modal');
+    const closeModalBtn = document.getElementById('closeModal');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const modalSubmit = document.getElementById('modalSubmit');
+    const getCodeLink = document.getElementById('getCodeLink');
+
+    function openModal(){ modal.style.display='flex'; modal.setAttribute('aria-hidden','false'); document.getElementById('fullName').focus();}
+    function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); }
+
+    openButtons.forEach(btn=>{ btn.addEventListener('click', e=>{ e.preventDefault(); openModal(); });});
+    closeModalBtn.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', closeModal);
+
+    getCodeLink.addEventListener('click', function(e){
+      e.preventDefault();
+      window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(WA_COUPON_MESSAGE), '_blank');
+    });
+
+    modalSubmit.addEventListener('click', function(){
+      window.open('https://wa.me

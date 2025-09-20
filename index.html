@@ -1,4 +1,4 @@
- <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -8,7 +8,7 @@
   <style>
     :root{
       --accent:#2563eb; /* sharp blue */
-      --accent-light:#d0e2ff; /* light blue background accents */
+      --accent-light:#d0e2ff; /* light blue accents */
       --muted:#374151;
       --bg:#f9fbff;
       --card:#ffffff;
@@ -156,7 +156,7 @@
     </footer>
   </div>
 
-  <!-- MODAL (popup form) -->
+  <!-- MODAL -->
   <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal" role="document" aria-labelledby="modal-title">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
@@ -201,9 +201,13 @@
   </div>
 
   <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
     const WA_NUMBER = '2349034634500';
     const WA_REG_MESSAGE = 'I want to pay for MIAMOR registration';
     const WA_COUPON_MESSAGE = 'I want to pay for MIAMOR coupon code';
+
     const modal = document.getElementById('modal');
     const openButtons = document.querySelectorAll('.open-modal');
     const closeModalBtn = document.getElementById('closeModal');
@@ -211,17 +215,42 @@
     const modalSubmit = document.getElementById('modalSubmit');
     const getCodeLink = document.getElementById('getCodeLink');
 
-    function openModal(){ modal.style.display='flex'; modal.setAttribute('aria-hidden','false'); document.getElementById('fullName').focus();}
-    function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); }
+    function openModal(e){
+      e.preventDefault();
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+      document.getElementById('fullName').focus();
+    }
 
-    openButtons.forEach(btn=>{ btn.addEventListener('click', e=>{ e.preventDefault(); openModal(); });});
+    function closeModal(){
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden','true');
+    }
+
+    openButtons.forEach(btn=>{
+      btn.addEventListener('click', openModal);
+    });
+
     closeModalBtn.addEventListener('click', closeModal);
     cancelBtn.addEventListener('click', closeModal);
 
-    getCodeLink.addEventListener('click', function(e){
+    modal.addEventListener('click', e=>{
+      if(e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', e=>{
+      if(e.key === 'Escape') closeModal();
+    });
+
+    getCodeLink.addEventListener('click', e=>{
       e.preventDefault();
       window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(WA_COUPON_MESSAGE), '_blank');
     });
 
-    modalSubmit.addEventListener('click', function(){
-      window.open('https://wa.me
+    modalSubmit.addEventListener('click', ()=>{
+      window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(WA_REG_MESSAGE), '_blank');
+      closeModal();
+    });
+  </script>
+</body>
+ </html>

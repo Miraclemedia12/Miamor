@@ -1,71 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MiAmor — Matchmaking & Earn</title>
-  <meta name="description" content="MiAmor — Earn by matchmaking. Register, match, earn ₦5,000 per match." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiAmor - Matchmaking & Earning Platform</title>
   <style>
-    :root{
-      --accent:#e11d48; /* red-ish accent like MiAmor */
-      --bg:#ffffff;
-      --muted:#6b7280;
-      --card:#fbfbfb;
-      --radius:16px;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:#0f172a;line-height:1.45}
-    .container{max-width:1100px;margin:0 auto;padding:20px}
-    header{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid #eee}
-    .logo{display:flex;align-items:center;gap:12px}
-    .logo .mark{width:48px;height:48px;border-radius:12px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px}
-    nav{display:none}
-    .btn{background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
-    .btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
-    .hero{padding:44px 0;text-align:center}
-    .hero h1{font-size:34px;margin:6px 0 8px;color:var(--accent)}
-    .hero p{color:var(--muted);max-width:760px;margin:0 auto}
-    .row{display:flex;flex-wrap:wrap;gap:16px;margin-top:24px;justify-content:center}
-    .card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:0 6px 18px rgba(15,23,42,0.04);flex:1;min-width:240px}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    section{padding:28px 0}
-    h2{margin:0 0 10px;font-size:20px}
-    p.small{color:var(--muted);margin:0}
-    ul{margin:8px 0 0 18px;color:var(--muted)}
-    footer{padding:22px 0;border-top:1px solid #f0f0f0;color:var(--muted);text-align:center;font-size:14px}
-    /* responsive */
-    @media(min-width:720px){ nav{display:flex;gap:16px;align-items:center} .hero h1{font-size:44px} .grid-3{grid-template-columns:repeat(3,1fr)} }
-    @media(max-width:719px){ .grid-3{grid-template-columns:1fr} }
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#fff; color:#333; }
+    header { background:#ff0066; color:white; padding:20px; text-align:center; }
+    nav a { color:white; margin:0 15px; text-decoration:none; font-weight:bold; }
+    .hero { text-align:center; padding:80px 20px; background:#ffe6f0; }
+    .hero h1 { font-size:2.5em; margin-bottom:20px; }
+    .btn { display:inline-block; padding:12px 25px; background:#ff0066; color:white; border-radius:8px; text-decoration:none; font-weight:bold; }
+    section { padding:60px 20px; text-align:center; }
+    .features, .pricing { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-top:30px; }
+    .card { background:#f9f9f9; padding:20px; border-radius:12px; box-shadow:0 4px 8px rgba(0,0,0,0.1); }
+    footer { background:#333; color:white; text-align:center; padding:20px; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="logo">
-        <div class="mark">M</div>
-        <div>
-          <div style="font-weight:700;color:var(--accent);font-size:18px">MiAmor</div>
-          <div style="font-size:12px;color:var(--muted)">Matchmaking • Earn • Connect</div>
-        </div>
+
+  <header>
+    <h1>MiAmor</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#register">Register</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Earn ₦5,000 for Every Match You Make</h1>
+    <p>Join MiAmor today and get rewarded for connecting people.</p>
+    <a href="https://wa.me/2349034634500?text=I%20want%20to%20pay%20for%20MIAMOR%20registration" class="btn" target="_blank">Register</a>
+  </div>
+
+  <section id="about">
+    <h2>About MiAmor</h2>
+    <p>MiAmor is a matchmaking and earning platform. Connect singles, create meaningful relationships, and earn rewards for every successful match.</p>
+  </section>
+
+  <section id="features">
+    <h2>Why Choose MiAmor?</h2>
+    <div class="features">
+      <div class="card">
+        <h3>💖 Matchmaking</h3>
+        <p>Connect people and help them find love while earning rewards.</p>
       </div>
+      <div class="card">
+        <h3>💸 Instant Rewards</h3>
+        <p>Get ₦5,000 instantly for every match you create.</p>
+      </div>
+      <div class="card">
+        <h3>🌍 Community</h3>
+        <p>Join a fast-growing community of earners and connectors.</p>
+      </div>
+    </div>
+  </section>
 
-      <nav>
-        <a href="#how" style="color:#111;text-decoration:none">How it works</a>
-        <a href="#features" style="color:#111;text-decoration:none">Features</a>
-        <a href="#pricing" style="color:#111;text-decoration:none">Pricing</a>
-        <button class="btn" onclick="scrollToSection('register')">Register</button>
-      </nav>
-    </header>
+  <section id="pricing">
+    <h2>Our Pricing</h2>
+    <div class="pricing">
+      <div class="card">
+        <h3>Basic Registration</h3>
+        <p>₦2,000 one-time</p>
+        <a href="https://wa.me/2349034634500?text=I%20want%20to%20pay%20for%20MIAMOR%20registration" class="btn" target="_blank">Register</a>
+      </div>
+      <div class="card">
+        <h3>Premium Registration</h3>
+        <p>₦5,000 one-time</p>
+        <a href="https://wa.me/2349034634500?text=I%20want%20to%20pay%20for%20MIAMOR%20registration" class="btn" target="_blank">Register</a>
+      </div>
+    </div>
+  </section>
 
-    <main>
-      <!-- Hero -->
-      <section class="hero">
-        <h1>MiAmor — The Future of Matchmaking & Earning</h1>
-        <p>Earn ₦5,000 on every match you make with MiAmor. Register once, start matching — get paid fast. Join thousands already earning from matchmaking services and VIP perks.</p>
-        <div class="row" style="margin-top:18px">
-          <button class="btn" onclick="scrollToSection('pricing')">Get Started</button>
-          <button class="btn ghost" style="margin-left:8px" onclick="scrollToSection('features')">Learn more</button>
+  <section id="register">
+    <h2>Get Started</h2>
+    <p>Click below to register and start earning today.</p>
+    <a href="https://wa.me/2349034634500?text=I%20want%20to%20pay%20for%20MIAMOR%20registration" class="btn" target="_blank">Register</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 MiAmor. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>          <button class="btn ghost" style="margin-left:8px" onclick="scrollToSection('features')">Learn more</button>
         </div>
       </section>
 

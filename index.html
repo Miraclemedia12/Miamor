@@ -185,88 +185,102 @@
       <div style="margin-top:12px">
         <div class="field">
           <label>Full Name</label>
-          <input id="fullName" type="text" placeholder="Your full name" required />
-        </div>
-        <div class="field">
-          <label>Email</label>
-          <input id="email" type="email" placeholder="you@example.com" required />
-        </div>
-        <div class="field">
-          <label>Phone Number</label>
-          <input id="phone" type="tel" placeholder="+234..." required />
-        </div>
-        <div class="field">
-          <label>Choose Plan</label>
-          <select id="plan">
-            <option value="10000">₦10,000 Plan</option>
-            <option value="14000">₦14,000 Plan</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Coupon Code</label>
-          <input id="coupon" type="text" placeholder="Enter coupon code " required />
-          <div class="small">Don't have coupon code? <a id="getCodeLink" href="#">Get Code</a></div>
-        </div>
-
-        <div class="row" style="justify-content:flex-end">
-          <button class="close-btn" id="cancelBtn">Cancel</button>
-          <button class="btn" id="modalSubmit">Get Started</button>
-        </div>
-      </div>
-    </div>
+<input id="fullName" type="text" placeholder="Your full name" required />
+</div>
+<div class="field">
+  <label>Email</label>
+  <input id="email" type="email" placeholder="you@example.com" required />
+</div>
+<div class="field">
+  <label>Phone Number</label>
+  <input id="phone" type="tel" placeholder="+234..." required />
+</div>
+<div class="field">
+  <label>Choose Plan</label>
+  <select id="plan" required>
+    <option value="">-- Select a plan --</option>
+    <option value="10000">₦10,000 Plan</option>
+    <option value="14000">₦14,000 Plan</option>
+  </select>
+</div>
+<div class="field">
+  <label>Coupon Code</label>
+  <input id="coupon" type="text" placeholder="Enter coupon code " />
+  <div class="small">
+    Don’t have coupon code? 
+    <a id="getCodeLink" href="#">Get Code</a>
   </div>
+</div>
 
-  <script>
-    // Set current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+<div class="row" style="justify-content:flex-end">
+  <button type="button" class="close-btn" id="cancelBtn">Cancel</button>
+  <button type="submit" class="btn" id="modalSubmit">Get Started</button>
+</div>
+</div>
+</div>
+</div>
 
-    const WA_NUMBER = '2349034634500';
-    const WA_REG_MESSAGE = 'Good day,I want to pay for MIAMOR registration';
-    const WA_COUPON_MESSAGE = 'Good day,I want to pay for MIAMOR coupon code';
+<script>
+  // Set current year in footer
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    const modal = document.getElementById('modal');
-    const openButtons = document.querySelectorAll('.open-modal');
-    const closeModalBtn = document.getElementById('closeModal');
-    const cancelBtn = document.getElementById('cancelBtn');
-    const modalSubmit = document.getElementById('modalSubmit');
-    const getCodeLink = document.getElementById('getCodeLink');
+  const modal = document.getElementById('modal');
+  const openButtons = document.querySelectorAll('.open-modal');
+  const closeModalBtn = document.getElementById('closeModal');
+  const cancelBtn = document.getElementById('cancelBtn');
+  const modalSubmit = document.getElementById('modalSubmit');
+  const getCodeLink = document.getElementById('getCodeLink');
 
-    function openModal(e){
-      e.preventDefault();
-      modal.style.display = 'flex';
-      modal.setAttribute('aria-hidden','false');
-      document.getElementById('fullName').focus();
+  function openModal(e){
+    e.preventDefault();
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden','false');
+    document.getElementById('fullName').focus();
+  }
+
+  function closeModal(){
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden','true');
+  }
+
+  openButtons.forEach(btn=>{
+    btn.addEventListener('click', openModal);
+  });
+
+  closeModalBtn.addEventListener('click', closeModal);
+  cancelBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', e=>{
+    if(e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', e=>{
+    if(e.key === 'Escape') closeModal();
+  });
+
+  getCodeLink.addEventListener('click', e=>{
+    e.preventDefault();
+    window.location.href = "payment.html"; // optional, can still link to WhatsApp
+  });
+
+  // ✅ validate form before redirect
+  modalSubmit.addEventListener('click', (e)=>{
+    e.preventDefault();
+
+    const fullName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const plan = document.getElementById('plan').value.trim();
+
+    if(!fullName || !email || !phone || !plan){
+      alert("Please fill all required fields before proceeding.");
+      return;
     }
 
-    function closeModal(){
-      modal.style.display = 'none';
-      modal.setAttribute('aria-hidden','true');
-    }
-
-    openButtons.forEach(btn=>{
-      btn.addEventListener('click', openModal);
-    });
-
-    closeModalBtn.addEventListener('click', closeModal);
-    cancelBtn.addEventListener('click', closeModal);
-
-    modal.addEventListener('click', e=>{
-      if(e.target === modal) closeModal();
-    });
-
-    document.addEventListener('keydown', e=>{
-      if(e.key === 'Escape') closeModal();
-    });
-
-    getCodeLink.addEventListener('click', e=>{
-      e.preventDefault();
-      window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(WA_COUPON_MESSAGE), '_blank');
-    });
-
-    modalSubmit.addEventListener('click', ()=>{
-      window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(WA_REG_MESSAGE), '_blank');
-      closeModal();
-    });
-  </script>
+    // go to payment page
+    window.location.href = "payment.html";
+    closeModal();
+  });
+</script>
 </body>
- </html>
+</html>

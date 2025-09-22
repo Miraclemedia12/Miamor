@@ -259,9 +259,19 @@
   });
 
   getCodeLink.addEventListener('click', e=>{
-    e.preventDefault();
-    window.location.href = "payment.html"; // optional, can still link to WhatsApp
-  });
+  e.preventDefault();
+
+  const fullName = document.getElementById('fullName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+
+  if(fullName && email && phone){
+    // go to payment.html if filled
+    window.location.href = "payment.html";
+  } else {
+    alert("Please fill Full Name, Email and Phone Number before getting a code.");
+  }
+});
 
   // ✅ validate form before redirect
   modalSubmit.addEventListener('click', (e)=>{
